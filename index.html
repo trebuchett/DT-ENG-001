@@ -182,6 +182,29 @@
   .exp-item ul{ margin:0; padding-left:20px; }
   .exp-item li{ font-size:0.87rem; line-height:1.6; margin-bottom:6px; color:var(--fg); }
   .exp-item li::marker{ color:var(--accent); }
+  .exp-item li.more{ display:none; }
+  .exp-item.expanded li.more{ display:list-item; }
+
+  .show-more{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    margin-top:16px;
+    padding:14px 16px;
+    background:none;
+    border:2px solid var(--accent);
+    color:var(--accent);
+    font-family:'Press Start 2P', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.04em;
+    cursor:pointer;
+  }
+  .show-more:hover{ background:var(--accent); color:var(--bg); }
+  .show-more .chev{ display:inline-block; transition:transform 0.15s ease; }
+  .exp-item.expanded .show-more .chev{ transform:rotate(180deg); }
+  @media (prefers-reduced-motion:reduce){ .show-more .chev{ transition:none; } }
 
   /* ---------- skills ---------- */
   .partslist{ display:grid; grid-template-columns:repeat(2, 1fr); gap:14px; }
@@ -426,11 +449,18 @@
       <h3>Primetals Technologies</h3>
       <div class="loc">Willstätt / Legelshurst, Germany — Werkstudent</div>
       <ul>
-        <li>CFD modeling of steel-melting equipment: supersonic coherent jets, combustion, off-gas extraction and water cooling panels, in OpenFOAM and ANSYS Fluent/CFX</li>
+        <li>Developed CFD models with OpenFOAM for Laval nozzles in electric arc furnace burners, validating analytical estimations and design choices</li>
+        <li>Ran CFD simulations of supersonic coherent jets and liquid steel bath penetration for different burner configurations in ANSYS</li>
         <li>Master's thesis: CFD investigation of CO combustion and scrap preheating in shaft furnaces for heat recovery optimization</li>
-        <li>Plant and building models in Siemens NX and Solid Edge; 2D plant layouts in AutoCAD</li>
-        <li>Site visits to three steel plants for equipment assessment and inventory</li>
+        <li>Assembled large-scale plant and building models in Siemens NX from multi-discipline component packages into a unified plant layout</li>
+        <li class="more">Developed CAD models for new equipment design, including structural layout and standard part selection in Solid Edge</li>
+        <li class="more">Created 2D plant layout drawings in AutoCAD, adapting equipment dimensions and identifying required modifications</li>
+        <li class="more">Created simplified CAD models of steel plant equipment for customer documentation and internal ERP systems</li>
+        <li class="more">Site visits to three steel plants for equipment assessment and inventory</li>
+        <li class="more">Developed analytical calculation tools for off-gas extraction systems</li>
+        <li class="more">Validated CFD models and analytical estimations against real plant data</li>
       </ul>
+      <button class="show-more" type="button" aria-expanded="false"><span class="label">SHOW MORE</span> <span class="chev">&#9662;</span></button>
     </div>
 
     <div class="panel exp-item">
@@ -438,10 +468,15 @@
       <h3>General Life</h3>
       <div class="loc">Izmir, Turkey — R&amp;D Engineer</div>
       <ul>
-        <li>Designed plastic enclosures and injection molds for smart-home thermostats in SolidWorks; FEM in ABAQUS for snap-fit connections</li>
-        <li>Developed a modular injection mold system with interchangeable cores, cutting tooling costs significantly across product variants</li>
-        <li>Built assembly tools and test rigs to reduce assembly time and error rate</li>
+        <li>Joined as an intern while completing bachelor's degree and grew into full-time R&amp;D Engineer after graduation</li>
+        <li>Designed plastic enclosures and injection molds for new thermostat products in SolidWorks</li>
+        <li>Built FEM models in ABAQUS for snap-fit connections of smart-home thermostat enclosures</li>
+        <li>Developed a modular injection mold system enabling production of multiple product variants without new tooling, reducing mold costs significantly</li>
+        <li class="more">Developed CFD models of different floor heating system configurations in ANSYS</li>
+        <li class="more">Designed a custom assembly tool for thermostat actuators, reducing assembly time and effort</li>
+        <li class="more">Designed an assembly device to ensure correct assembly of smart thermostats, eliminating mistakes and increasing efficiency</li>
       </ul>
+      <button class="show-more" type="button" aria-expanded="false"><span class="label">SHOW MORE</span> <span class="chev">&#9662;</span></button>
     </div>
   </section>
 
@@ -576,7 +611,12 @@
       { src: "mold1.JPG", alt: "Modular injection mold CAD assembly, exploded isometric view" },
       { src: "mold2.JPG", alt: "Injection mold CAD, interchangeable insert variant" },
       { src: "mold3.JPG", alt: "Machined mold plate, cavity side" },
-      { src: "mold4.JPG", alt: "Machined mold plate, close-up of dual cavities" }
+      { src: "mold4.JPG", alt: "Machined mold plate, close-up of dual cavities" },
+      { src: "mold5.JPG", alt: "Machined dual-cavity mold tooling block" },
+      { src: "mold6.JPG", alt: "Mold insert on the CNC machine after final machining" },
+      { src: "mold7.JPG", alt: "Mold core and cavity plates, dual-cavity layout" },
+      { src: "mold8.JPG", alt: "CAD rendering of the smart thermostat enclosure design" },
+      { src: "mold9.JPG", alt: "3D-printed prototype enclosure next to the final injection-molded part" }
     ]
   };
 
@@ -629,6 +669,19 @@
   document.querySelectorAll('.gallery-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
       open(btn.getAttribute('data-gallery'), 0);
+    });
+  });
+
+  document.querySelectorAll('.show-more').forEach(function(btn){
+    var item = btn.closest('.exp-item');
+    var moreCount = item.querySelectorAll('li.more').length;
+    var moreLabel = 'SHOW MORE (+' + moreCount + ')';
+    var lessLabel = 'SHOW LESS';
+    btn.querySelector('.label').textContent = moreLabel;
+    btn.addEventListener('click', function(){
+      var expanded = item.classList.toggle('expanded');
+      btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      btn.querySelector('.label').textContent = expanded ? lessLabel : moreLabel;
     });
   });
 
