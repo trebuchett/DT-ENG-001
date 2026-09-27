@@ -151,9 +151,16 @@
     text-transform:uppercase;
     letter-spacing:0.06em;
   }
-  .hero .contactlines{ display:flex; flex-direction:column; gap:4px; }
-  .hero .contactlines .row{ font-size:0.85rem; color:var(--muted); }
-  .hero .contactlines .row .prompt{ color:var(--accent); margin-right:8px; }
+  .hero .contactlines{ display:flex; flex-direction:column; gap:6px; }
+  .hero .contactlines .row{ font-size:0.85rem; color:var(--muted); display:flex; align-items:baseline; gap:10px; }
+  .hero .contactlines .row .k{
+    font-family:'Press Start 2P', monospace;
+    font-size:0.56rem;
+    letter-spacing:0.03em;
+    color:var(--accent);
+    white-space:nowrap;
+    flex:none;
+  }
   .hero .contactlines a{ color:var(--fg); text-decoration:underline; text-underline-offset:3px; }
 
   /* ---------- sections ---------- */
@@ -391,8 +398,8 @@
 
 <div class="sheet">
 
-  <div class="boot"><span class="prompt">&gt;</span> whoami</div>
-  <div class="boot"><span class="prompt">&gt;</span> loading engineer.profile ... <span class="ok">OK</span></div>
+  <div class="boot"><span class="prompt">&gt;</span> GENERAL NOTE — ALL DATA PER CURRENT REVISION</div>
+  <div class="boot"><span class="prompt">&gt;</span> QUALITY STATUS — <span class="ok">FREIGEGEBEN / APPROVED</span></div>
 
   <div class="panel statusbar">
     <div class="cell"><span class="k">DWG NO.</span><span class="v">DT-ENG-001</span></div>
@@ -413,15 +420,15 @@
         <rect x="3" y="18" width="3" height="3"/><rect x="6" y="18" width="3" height="3"/><rect x="9" y="18" width="3" height="3"/><rect x="12" y="18" width="3" height="3"/><rect x="15" y="18" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/>
         <rect x="6" y="21" width="3" height="3"/><rect x="9" y="21" width="3" height="3"/><rect x="12" y="21" width="3" height="3"/><rect x="15" y="21" width="3" height="3"/>
       </svg>
-      <span class="eyebrow">SPARE_ENGINEER.EXE</span>
+      <span class="eyebrow">POS. 04 — SPARE ENGINEER</span>
     </div>
     <h1>Denizhan Akin Tarakci<span class="cursor" aria-hidden="true"></span></h1>
     <p class="role">Mechanical Engineer — CFD · CAD · Product Development</p>
     <div class="contactlines">
-      <div class="row"><span class="prompt">$</span>location <a href="#">Emmendingen, Germany — open to relocation</a></div>
-      <div class="row"><span class="prompt">$</span>mail <a href="mailto:akintarakci691@gmail.com">akintarakci691@gmail.com</a></div>
-      <div class="row"><span class="prompt">$</span>tel <a href="tel:+4915733338134">+49 157 3333 8134</a></div>
-      <div class="row"><span class="prompt">$</span>linkedin <a href="https://www.linkedin.com/in/akin-tarakci-44511a232" target="_blank" rel="noopener">/in/akin-tarakci-44511a232</a></div>
+      <div class="row"><span class="k">STANDORT</span><a href="#">Emmendingen, Germany — open to relocation</a></div>
+      <div class="row"><span class="k">E-MAIL</span><a href="mailto:akintarakci691@gmail.com">akintarakci691@gmail.com</a></div>
+      <div class="row"><span class="k">TELEFON</span><a href="tel:+4915733338134">+49 157 3333 8134</a></div>
+      <div class="row"><span class="k">LINKEDIN</span><a href="https://www.linkedin.com/in/akin-tarakci-44511a232" target="_blank" rel="noopener">/in/akin-tarakci-44511a232</a></div>
     </div>
   </header>
 
