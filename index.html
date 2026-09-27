@@ -376,6 +376,15 @@
     font-size:0.6rem;
     color:var(--muted);
   }
+  .lb-caption{
+    max-width:56ch;
+    margin:0;
+    padding:0 8px;
+    text-align:center;
+    font-size:0.85rem;
+    line-height:1.55;
+    color:var(--fg);
+  }
   .lb-thumbs{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; }
   .lb-thumbs img{
     width:64px; height:48px;
@@ -442,7 +451,7 @@
     <h1>Denizhan Akin Tarakci<span class="cursor" aria-hidden="true"></span></h1>
     <p class="role">Mechanical Engineer — CFD · CAD · Product Development</p>
     <div class="contactlines">
-      <div class="row"><span class="k">STANDORT</span><a href="#">Emmendingen, Germany — open to relocation</a></div>
+      <div class="row"><span class="k">STANDORT</span><a href="#">Germany — open to relocation</a></div>
       <div class="row"><span class="k">E-MAIL</span><a href="mailto:akintarakci691@gmail.com">akintarakci691@gmail.com</a></div>
       <div class="row"><span class="k">TELEFON</span><a href="tel:+4915733338134">+49 157 3333 8134</a></div>
       <div class="row"><span class="k">LINKEDIN</span><a href="https://www.linkedin.com/in/akin-tarakci-44511a232" target="_blank" rel="noopener">/in/akin-tarakci-44511a232</a></div>
@@ -452,11 +461,13 @@
   <section class="section profile">
     <div class="section-head"><span class="eyebrow">[ 01 ]</span><h2>Profile</h2></div>
     <p>
-      Mechanical engineer based in Emmendingen, Germany, working across CFD simulation, CAD
+      Mechanical engineer in Germany, working across CFD simulation, CAD
       design and product development. MSc in Renewable Energy and Data Engineering from
       Hochschule Offenburg, BSc in Mechanical Engineering from Celal Bayar University. Equally
       comfortable in a simulation environment, a CAD system, or the workshop — self-taught
-      welder and metalworker alongside the analytical side of the job.
+      welder and metalworker alongside the analytical side of the job. Comfortable working
+      independently or across interdisciplinary teams, taking ownership of a task from first
+      concept to finished part.
     </p>
   </section>
 
@@ -567,7 +578,7 @@
         <div class="placeholder-img has-image"><img src="T.png" alt="Temperature contour of the burner jet penetration CFD study"></div>
         <div class="body">
           <h3>Burner Jet Penetration CFD</h3>
-          <p>CFD study of a coherent oxy-fuel burner jet, tracking O2, CO, CO2, Mach number and temperature along the jet penetration length.</p>
+          <p>CFD study of a coherent burner jet: bath penetration and splashing behavior, plus species and temperature development (O2, CO, CO2, Mach number) along the jet.</p>
           <span class="tag">CFD</span>
           <button class="btn gallery-btn" type="button" data-gallery="burner">VIEW GALLERY</button>
         </div>
@@ -626,6 +637,7 @@
       <button class="lb-nav lb-next" type="button" aria-label="Next image">&rsaquo;</button>
     </div>
     <div class="lb-counter" id="lbCounter"></div>
+    <p class="lb-caption" id="lbCaption"></p>
     <div class="lb-thumbs" id="lbThumbs"></div>
   </div>
 </div>
@@ -634,23 +646,38 @@
 (function(){
   var galleries = {
     mold: [
-      { src: "mold1.JPG", alt: "Modular injection mold CAD assembly, exploded isometric view" },
-      { src: "mold2.JPG", alt: "Injection mold CAD, interchangeable insert variant" },
-      { src: "mold3.JPG", alt: "Machined mold plate, cavity side" },
-      { src: "mold4.JPG", alt: "Machined mold plate, close-up of dual cavities" },
-      { src: "mold5.JPG", alt: "Machined dual-cavity mold tooling block" },
-      { src: "mold6.JPG", alt: "Mold insert on the CNC machine after final machining" },
-      { src: "mold7.JPG", alt: "Mold core and cavity plates, dual-cavity layout" },
-      { src: "mold8.JPG", alt: "CAD rendering of the smart thermostat enclosure design" },
-      { src: "mold9.JPG", alt: "3D-printed prototype enclosure next to the final injection-molded part" }
+      { src: "mold1.JPG", alt: "Modular injection mold CAD assembly, exploded isometric view",
+        caption: "CAD model of the complete smart home thermostat housing plastic injection mold assembly." },
+      { src: "mold2.JPG", alt: "Injection mold CAD, interchangeable insert variant",
+        caption: "Exchangeable plastic injection mold that enables producing multiple designs without requiring a new mold." },
+      { src: "mold3.JPG", alt: "Machined mold plate, cavity side",
+        caption: "The machined mold, cavity side. These recesses are what the plastic enclosure is formed against." },
+      { src: "mold4.JPG", alt: "Machined mold plate, close-up of dual cavities",
+        caption: "Close-up of the finished cavity machining, showing the surface detail that gets transferred into the molded part." },
+      { src: "mold5.JPG", alt: "Machined dual-cavity mold tooling block",
+        caption: "The completed mold block, ready to run in production." },
+      { src: "mold6.JPG", alt: "Mold insert on the CNC machine after final machining",
+        caption: "The insert straight off the CNC machine after final machining, chips still on the table." },
+      { src: "mold7.JPG", alt: "Mold core and cavity plates, dual-cavity layout",
+        caption: "Core and cavity plates side by side, showing how the two halves of the dual-cavity mold come together." },
+      { src: "mold8.JPG", alt: "CAD rendering of the smart thermostat enclosure design",
+        caption: "The product this mold was built for: the smart thermostat enclosure." },
+      { src: "mold9.JPG", alt: "3D-printed prototype enclosure next to the final injection-molded part",
+        caption: "A 3D-printed prototype next to the final injection-molded part, used to validate the design before committing to steel tooling." }
     ],
     burner: [
-      { type: "video", src: "penetration_150O2_100CH4.mp4", poster: "T.png", alt: "CFD animation of the burner jet penetration, O2/CH4 configuration" },
-      { src: "O2.png", alt: "Oxygen (O2) mass fraction contour along the jet centerline" },
-      { src: "Ma.png", alt: "Mach number contour along the jet centerline" },
-      { src: "CO2.png", alt: "Carbon dioxide (CO2) mass fraction contour along the jet centerline" },
-      { src: "CO.png", alt: "Carbon monoxide (CO) mass fraction contour along the jet centerline" },
-      { src: "T.png", alt: "Temperature contour along the jet centerline" }
+      { type: "video", src: "penetration_150O2_100CH4.mp4", poster: "burner-video-poster.jpg", alt: "CFD animation of the coherent jet penetrating a molten steel bath",
+        caption: "Animation of the coherent jet penetrating into the molten steel bath over time, showing how far the jet penetrates and the splashing behavior." },
+      { src: "O2.png", alt: "Oxygen (O2) mass fraction contour along the jet centerline",
+        caption: "Oxygen concentration along the jet centerline. The core stays oxygen-rich until it mixes with the surrounding gas." },
+      { src: "Ma.png", alt: "Mach number contour along the jet centerline",
+        caption: "Mach number along the jet centerline, showing the jet losing velocity as it penetrates." },
+      { src: "CO2.png", alt: "Carbon dioxide (CO2) mass fraction contour along the jet centerline",
+        caption: "CO2 concentration, marking where combustion products form as the jet mixes and reacts." },
+      { src: "CO.png", alt: "Carbon monoxide (CO) mass fraction contour along the jet centerline",
+        caption: "CO concentration, concentrated in and around the jet core where combustion is incomplete." },
+      { src: "T.png", alt: "Temperature contour along the jet centerline",
+        caption: "Temperature field, showing the reaction zone forming around the jet as combustion progresses." }
     ]
   };
 
@@ -659,6 +686,7 @@
   var lbVideo = document.getElementById('lbVideo');
   var lbThumbs = document.getElementById('lbThumbs');
   var lbCounter = document.getElementById('lbCounter');
+  var lbCaption = document.getElementById('lbCaption');
   var current = [];
   var index = 0;
   var lastFocused = null;
@@ -680,6 +708,7 @@
       lbMain.alt = item.alt;
     }
     lbCounter.textContent = (index + 1) + " / " + current.length;
+    lbCaption.textContent = item.caption || item.alt;
     lbThumbs.innerHTML = "";
     current.forEach(function(it, i){
       var t;
